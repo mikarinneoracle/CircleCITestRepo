@@ -9,6 +9,7 @@ jobs:
     machine: true
     resource_class: mikarinneoracle/pool
     steps:
+      - checkout
       - run:
           command: |
             export PATH=/home/ubuntu/bin:$PATH
