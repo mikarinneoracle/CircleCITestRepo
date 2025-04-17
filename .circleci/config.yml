@@ -20,7 +20,7 @@ jobs:
             docker run fra.ocir.io/$namespace/say-hello:latest
             # OKE cluster access is already configured on the runner and can be at ~/.kube/config
             kubectl get nodes
-            cd ..
+            cd ../workdir
             echo "files:"
             ls
             #sed 's/TENANCY_NAMESPACE/$namespace/g' /hello.yaml
