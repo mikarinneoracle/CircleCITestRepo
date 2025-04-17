@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: atp-nodejs
-        image: fra.ocir.io/TENANCY_NAMESPACE/hello:latest
+        image: fra.ocir.io/TENANCY_NAMESPACE/say-hello:latest
         imagePullPolicy: Always
       imagePullSecrets:
         - name: ocirsecret
