@@ -22,4 +22,5 @@ jobs:
             # OKE cluster access is already configured on the runner and can be at ~/.kube/config
             kubectl get nodes
             sed 's/TENANCY_NAMESPACE/$namespace/g' -i hello.yaml
+            cat hello.yaml
             kubectl create -f hello.yaml
