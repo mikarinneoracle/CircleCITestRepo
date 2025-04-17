@@ -2,11 +2,23 @@ version: 2.1
 workflows:
   testing:
     jobs:
-      - runner-test
+      - runner-test:
+          context: testing
 jobs:
   runner-test:
     machine: true
     resource_class: mikarinneoracle/pool
     steps:
-      - run: echo "Hi I'm on Runners!"
-
+      - run:
+          command: |
+            export PATH=/home/ubuntu/bin:$PATH
+            export OCI_CLI_AUTH=instance_principal
+            export namespace=$(oci os ns get | jq .data | tr -d '"')
+            echo $namespace
+            oci raw-request --region eu-frankfurt-1 --http-method GET --target-uri 'https://fra.ocir.io/20180419/docker/token' --auth=instance_principal | jq -r .data.token | docker login -u BEARER_TOKEN --password-stdin fra.ocir.io
+            docker pull fra.ocir.io/$namespace/say-hello:latest
+            docker run fra.ocir.io/$namespace/say-hello:latest
+            # OKE cluster access is already configured on the runner and can be at ~/.kube/config
+            kubectl get nodes
+            sed 's/TENANCY_NAMESPACE/$namespace/g' .circleci/hello.yaml
+            kubectl create -f /hello.yaml
