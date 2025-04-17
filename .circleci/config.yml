@@ -23,5 +23,5 @@ jobs:
             kubectl get nodes
             echo "Files."
             ls
-            #sed 's/TENANCY_NAMESPACE/$namespace/g' /hello.yaml
-            #kubectl create -f /hello.yaml
+            #sed 's/TENANCY_NAMESPACE/$namespace/g' hello.yaml
+            #kubectl create -f hello.yaml
