@@ -9,6 +9,7 @@ jobs:
     machine: true
     resource_class: mikarinneoracle/pool
     steps:
+      - checkout
       - run:
           command: |
             export PATH=/home/ubuntu/bin:$PATH
@@ -20,5 +21,6 @@ jobs:
             docker run fra.ocir.io/$namespace/say-hello:latest
             # OKE cluster access is already configured on the runner and can be at ~/.kube/config
             kubectl get nodes
-            sed 's/TENANCY_NAMESPACE/$namespace/g' /hello.yaml
-            kubectl create -f /hello.yaml
+            sed "s/TENANCY_NAMESPACE/$namespace/g" -i hello.yaml
+            cat hello.yaml
+            kubectl create -f hello.yaml
