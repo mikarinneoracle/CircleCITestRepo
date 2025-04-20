@@ -23,4 +23,5 @@ jobs:
             kubectl get nodes
             sed "s/TENANCY_NAMESPACE/$namespace/g" -i hello.yaml
             cat hello.yaml
+            kubectl delete deployment hello
             kubectl create -f hello.yaml
