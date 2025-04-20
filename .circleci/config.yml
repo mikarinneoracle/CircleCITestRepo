@@ -12,7 +12,6 @@ jobs:
       - checkout
       - run:
           command: |
-            #source /home/circleci/.bashrc
             export PATH=/home/circleci/bin:$PATH
             export OCI_CLI_AUTH=instance_principal
             export namespace=$(oci os ns get | jq .data | tr -d '"')
