@@ -21,5 +21,5 @@ jobs:
             docker run fra.ocir.io/$TENANCY_NAMESPACE/say-hello:latest
             # OKE cluster access is already configured on the runner and can be at ~/.kube/config
             sed "s|TENANCY_NAMESPACE|$TENANCY_NAMESPACE|g" -i hello.yaml
-            sed "s|VERSION:$VERSION|g" -i hello.yaml
+            sed "s|VERSION|$VERSION|g" -i hello.yaml
             kubectl apply -f hello.yaml
