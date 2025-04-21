@@ -1,9 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: hello
-  labels:
-    app: hello
+  name: hello-VERSION
 spec:
   template:
     metadata:
@@ -12,7 +10,7 @@ spec:
     spec:
       containers:
       - name: atp-nodejs
-        image: fra.ocir.io/TENANCY_NAMESPACE/say-hello:latest
+        image: fra.ocir.io/TENANCY_NAMESPACE/say-hello:VERSION
         imagePullPolicy: Always
       restartPolicy: OnFailure
       imagePullSecrets:
