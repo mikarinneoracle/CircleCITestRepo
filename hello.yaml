@@ -1,9 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: hello
-  labels:
-    app: hello
+  name: hello-VERSION
 spec:
   template:
     metadata:
