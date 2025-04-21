@@ -15,12 +15,10 @@ jobs:
             export PATH=/home/circleci/bin:$PATH
             export OCI_CLI_AUTH=instance_principal
             export NAMESPACE=$(oci os ns get | jq .data | tr -d '"')
-            echo $NAMESPACE
             oci raw-request --region eu-frankfurt-1 --http-method GET --target-uri 'https://fra.ocir.io/20180419/docker/token' --auth=instance_principal | jq -r .data.token | docker login -u BEARER_TOKEN --password-stdin fra.ocir.io
             VERSION=$(date +%Y%m%d%H%M%S)
-            echo $VERSION
-            docker pull fra.ocir.io/$namespace/say-hello:latest
-            docker run fra.ocir.io/$namespace/say-hello:latest
+            docker pull fra.ocir.io/$NAMESPACE/say-hello:latest
+            docker run fra.ocir.io/$NAMESPACE/say-hello:latest
             # OKE cluster access is already configured on the runner and can be at ~/.kube/config
             sed "s|TENANCY_NAMESPACE:$NAMESPACE|g" -i hello.yaml
             sed "s|VERSION:$VERSION|g" -i hello.yaml
