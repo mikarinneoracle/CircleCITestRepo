@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: atp-nodejs
-        image: fra.ocir.io/TENANCY_NAMESPACE/say-hello:VERSION
+        image: fra.ocir.io/TENANCY_NAMESPACE/say-hello:latest
         imagePullPolicy: Always
       restartPolicy: OnFailure
       imagePullSecrets:
