@@ -21,7 +21,7 @@ jobs:
             echo $VERSION
             docker pull fra.ocir.io/$namespace/say-hello:latest
             docker tag fra.ocir.io/$namespace/say-hello:latest fra.ocir.io/$namespace/say-hello:$VERSION
-            docker run fra.ocir.io/$namespace/say-hello:$VERSION
+            docker push fra.ocir.io/$namespace/say-hello:$VERSION
             # OKE cluster access is already configured on the runner and can be at ~/.kube/config
             sed "s|TENANCY_NAMESPACE:$NAMESPACE|g" -i hello.yaml
             sed "s|VERSION:$VERSION|g" -i hello.yaml
