@@ -1,14 +1,10 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
   name: hello
   labels:
     app: hello
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: hello
   template:
     metadata:
       labels:
@@ -18,5 +14,6 @@ spec:
       - name: atp-nodejs
         image: fra.ocir.io/TENANCY_NAMESPACE/say-hello:latest
         imagePullPolicy: Always
+      restartPolicy: OnFailure
       imagePullSecrets:
         - name: ocirsecret
