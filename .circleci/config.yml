@@ -18,7 +18,7 @@ jobs:
             oci raw-request --region eu-frankfurt-1 --http-method GET --target-uri 'https://fra.ocir.io/20180419/docker/token' --auth=instance_principal | jq -r .data.token | docker login -u BEARER_TOKEN --password-stdin fra.ocir.io
             VERSION=$(date +%Y-%m-%d-%H%M%S)
             docker pull hello-world
-            docker tag hello fra.ocir.io/$TENANCY_NAMESPACE/say-hello:latest
+            docker tag hello-world fra.ocir.io/$TENANCY_NAMESPACE/say-hello:latest
             docker pull fra.ocir.io/$TENANCY_NAMESPACE/say-hello:latest
             docker run fra.ocir.io/$TENANCY_NAMESPACE/say-hello:latest
             # OKE cluster access is already configured on the runner and can be at ~/.kube/config
