@@ -9,4 +9,4 @@ Installed software on the runner:
 - docker
 - kubectl
 
-  How-To blog post: https://medium.com/@mika.rinne/circleci-devops-with-oci-2b71ab5045c0
+How-To blog post: https://medium.com/@mika.rinne/circleci-devops-with-oci-2b71ab5045c0
