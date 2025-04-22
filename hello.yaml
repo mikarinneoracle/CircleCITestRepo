@@ -9,7 +9,7 @@ spec:
         app: hello
     spec:
       containers:
-      - name: atp-nodejs
+      - name: say-hello
         image: fra.ocir.io/TENANCY_NAMESPACE/say-hello:latest
         imagePullPolicy: Always
       restartPolicy: OnFailure
