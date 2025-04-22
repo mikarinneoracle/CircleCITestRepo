@@ -2,8 +2,7 @@ version: 2.1
 workflows:
   testing:
     jobs:
-      - runner-test:
-          context: testing
+      - runner-test
 jobs:
   runner-test:
     machine: true
