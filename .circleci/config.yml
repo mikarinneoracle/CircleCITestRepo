@@ -10,7 +10,6 @@ jobs:
     environment:
       PATH: /home/circleci/bin:$(PATH)
       OCI_CLI_AUTH: instance_principal
-      TENANCY_NAMESPACE: $(oci os ns get | jq .data | tr -d '"')
     steps:
       - checkout
       - run:
