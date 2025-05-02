@@ -7,12 +7,14 @@ jobs:
   runner-test:
     machine: true
     resource_class: mikarinneoracle/pool
+    environment:
+      PATH: /home/circleci/bin:$(PATH)
+      OCI_CLI_AUTH: instance_principal
+      TENANCY_NAMESPACE: $(oci os ns get | jq .data | tr -d '"')
     steps:
       - checkout
       - run:
           command: |
-            export PATH=/home/circleci/bin:$PATH
-            export OCI_CLI_AUTH=instance_principal
             export TENANCY_NAMESPACE=$(oci os ns get | jq .data | tr -d '"')
             oci raw-request --region eu-frankfurt-1 --http-method GET --target-uri 'https://fra.ocir.io/20180419/docker/token' --auth=instance_principal | jq -r .data.token | docker login -u BEARER_TOKEN --password-stdin fra.ocir.io
             VERSION=$(date +%Y-%m-%d-%H%M%S)
